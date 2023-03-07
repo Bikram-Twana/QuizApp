@@ -5,14 +5,9 @@ void main() {
   runApp(const App());
 }
 
-class App extends StatefulWidget {
+class App extends StatelessWidget {
   const App({super.key});
 
-  @override
-  State<App> createState() => _AppState();
-}
-
-class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -34,17 +29,15 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   int score = 0;
   int currentQuestion = 0;
+  bool rvalue = false;
+  String msg1 = "Show Ans";
 
   void checkAnswer(int userChooseOption) {
     setState(() {
-      if (userChooseOption == allQuestions[currentQuestion].ans &&
-          currentQuestion < allQuestions.length - 1) {
+      if (userChooseOption == allQuestions[currentQuestion].ans) {
         score++;
       }
       if (currentQuestion == allQuestions.length - 1) {
-        if (userChooseOption == allQuestions[currentQuestion].ans) {
-          score++;
-        }
         showDialog(
             context: context,
             builder: (context) => AlertDialog(
@@ -57,12 +50,14 @@ class _MyAppState extends State<MyApp> {
                           Navigator.pop(context);
                           reset();
                         },
-                        child: const Text("Reset")) 
+                        child: const Text("Reset"))
                   ],
                 ));
         return;
       }
       currentQuestion++;
+      rvalue = false;
+      msg1 = "Show Ans";
 
       // if (currentQuestion == allQuestions.length - 1) {
       //   // for last question, needs decrement so that it can stay on last question screen
@@ -83,18 +78,34 @@ class _MyAppState extends State<MyApp> {
     setState(() {
       score = 0;
       currentQuestion = 0;
+      msg1 = "Show Ans";
     });
+  }
+
+  void showAnswer(bool rv) {
+    if (!rvalue == rv) {
+      setState(() {
+        msg1 = "Show Ans ${allQuestions[currentQuestion].ans}";
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.green,
+          title: Center(
+              child: Text(
+            "Quiz APP",
+          )),
+        ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             reset();
           },
-          child: const Icon(Icons.undo_outlined),
+          child: const Icon(Icons.refresh),
         ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -122,7 +133,7 @@ class _MyAppState extends State<MyApp> {
                 width: double.infinity,
                 //color: Colors.green,
                 decoration: BoxDecoration(
-                  color: Colors.green,
+                  color: Colors.green.shade400,
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Center(
@@ -137,13 +148,13 @@ class _MyAppState extends State<MyApp> {
             ),
             //opt 2
             GestureDetector(
-              onTap: () => checkAnswer(2),
+              onTap: () => {checkAnswer(2)},
               child: Container(
                 height: 30,
                 width: double.infinity,
                 //color: Colors.green,
                 decoration: BoxDecoration(
-                  color: Colors.green,
+                  color: Colors.green.shade400,
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Center(
@@ -164,7 +175,7 @@ class _MyAppState extends State<MyApp> {
                 width: double.infinity,
                 //color: Colors.green,
                 decoration: BoxDecoration(
-                  color: Colors.green,
+                  color: Colors.green.shade400,
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Center(
@@ -185,7 +196,7 @@ class _MyAppState extends State<MyApp> {
                 width: double.infinity,
                 //color: Colors.green,
                 decoration: BoxDecoration(
-                  color: Colors.green,
+                  color: Colors.green.shade400,
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Center(
@@ -206,6 +217,12 @@ class _MyAppState extends State<MyApp> {
                 style: const TextStyle(fontSize: 16),
               ),
             ),
+
+            const SizedBox(
+              height: 6,
+            ),
+
+            TextButton(onPressed: () => {showAnswer(true)}, child: Text(msg1))
           ],
         ),
       ),

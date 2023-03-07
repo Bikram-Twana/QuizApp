@@ -1,16 +1,15 @@
 # quizapp
 
-A new Flutter project.
+This is a Flutter Quiz App,  wtih following features:
+1. Ten multiple-choice questions from question.dart model file.
+2. Each question has four button-based selectable options.
+3. Each question's score will be determined show immediately.
+4. Show answer text button that shows correct options for a given questions.
+5.  A floating action button for reset quiz and display Dialog after quiz finishes.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+<img src="assets/1.png" width="300" height="600" />
 
-A few resources to get you started if this is your first Flutter project:
+<img src="assets/exp2.png" width="300" height="600" />
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<img src="assets/exp3.png" width="300" height="600" />

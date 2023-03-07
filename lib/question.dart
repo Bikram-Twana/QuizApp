@@ -81,6 +81,24 @@ List<Question> allQuestions = [
     opt2: "const",
     opt3: "Both of these",
     opt4: "None of these",
-    ans: 4,
+    ans: 2,
+  ),
+
+  Question(
+    question: "9. The print() method in Dart takes? ",
+    opt1: "a single argument",
+    opt2: "two argument",
+    opt3: "multiple argument",
+    opt4: "user defined multiple arguments",
+    ans: 1,
+  ),
+
+  Question(
+    question: "10. Which command is used to run dart file 'program.dart'? ",
+    opt1: "run program.dart",
+    opt2: "d program.dart",
+    opt3: "dart program.dart",
+    opt4: "start program.dart",
+    ans: 3,
   ),
 ];
