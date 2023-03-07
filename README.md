@@ -10,6 +10,6 @@ This is a Flutter Quiz App,  wtih following features:
 
 <img src="assets/1.png" width="300" height="600" />
 
-<img src="assets/exp2.png" width="300" height="600" />
+<img src="assets/2.png" width="300" height="600" />
 
-<img src="assets/exp3.png" width="300" height="600" />
+<img src="assets/3.png" width="300" height="600" />
